@@ -29,7 +29,7 @@ class IniciarSesionTests {
     var mActivityScenarioRule = ActivityScenarioRule(IniciarSesionActivity::class.java)
 
     @Test
-    fun comprobarErroresTests() {
+    fun ComprobarTodosLosMensajesDeErrorDelLogin() {
         val materialButton = onView(
             allOf(
                 withId(R.id.registro), withText("Registrarse"),
@@ -400,7 +400,7 @@ class IniciarSesionTests {
     }
 
     @Test
-    fun iniciarSesionTest() {
+    fun IniciarSesionDeManeraCorrectaDeUnUsuarioRegistrado() {
         val materialButton = onView(
             withId(R.id.registro)
         )
@@ -514,7 +514,7 @@ class IniciarSesionTests {
     }
 
     @Test
-    fun botonRegistroTest() {
+    fun ComprobacionDelFuncionamientoDelBotonQueLlevaARegistro() {
         val materialButton = onView(
             withId(R.id.registro)
         )

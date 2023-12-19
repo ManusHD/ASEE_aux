@@ -28,7 +28,7 @@ class LocalidadTests {
     var mActivityScenarioRule = ActivityScenarioRule(IniciarSesionActivity::class.java)
 
     @Test
-    fun verTiempoActual() {
+    fun MostrarDatosClimatologiaActualDadaLocalidad() {
         val materialButton = onView(
             withId(R.id.registro)
         )
@@ -125,7 +125,7 @@ class LocalidadTests {
     }
 
     @Test
-    fun verTiempoProximasHoras() {
+    fun MostrarDetallePrediccionMeteorologicaProximasHorasDeUnMunicipio() {
         val materialButton = onView(
             withId(R.id.registro)
         )
@@ -214,7 +214,7 @@ class LocalidadTests {
     }
 
     @Test
-    fun verTiempoProximosDias() {
+    fun MostrarDetallePrediccionMeteorologicaAUnaSemanaVistaDeUnaCiudad() {
         val materialButton = onView(
             withId(R.id.registro)
         )

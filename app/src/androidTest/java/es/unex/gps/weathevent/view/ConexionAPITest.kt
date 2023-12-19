@@ -15,20 +15,21 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.TypeSafeMatcher
+import org.hamcrest.core.IsInstanceOf
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class BusquedaTest {
+class ConexionAPITest {
 
     @Rule
     @JvmField
     var mActivityScenarioRule = ActivityScenarioRule(IniciarSesionActivity::class.java)
 
     @Test
-    fun BusquedaLocalidadParaAccesoASusDatosClimatologicos() {
+    fun ConectarProyectoConAPIdeMeteorologia() {
         val materialButton = onView(
             withId(R.id.registro)
         )
@@ -37,12 +38,12 @@ class BusquedaTest {
         val appCompatEditText = onView(
             withId(R.id.nombreRegistro)
         )
-        appCompatEditText.perform(replaceText("test busqueda"), closeSoftKeyboard())
+        appCompatEditText.perform(replaceText("test registro"), closeSoftKeyboard())
 
         val appCompatEditText2 = onView(
             withId(R.id.usernameRegistro)
         )
-        appCompatEditText2.perform(replaceText("testBuscarLocalidad"), closeSoftKeyboard())
+        appCompatEditText2.perform(replaceText("testAPI"), closeSoftKeyboard())
 
         val appCompatEditText3 = onView(
             withId(R.id.emailRegistro)
@@ -52,7 +53,7 @@ class BusquedaTest {
         val appCompatEditText4 = onView(
             withId(R.id.passRegistro)
         )
-        appCompatEditText4.perform(replaceText("test"), closeSoftKeyboard())
+        appCompatEditText4.perform(replaceText("test123"), closeSoftKeyboard())
 
         val materialButton2 = onView(
             withId(R.id.confirmarRegistro)
@@ -79,32 +80,14 @@ class BusquedaTest {
         )
         bottomNavigationItemView.perform(click())
 
-        Thread.sleep(15000)
+        Thread.sleep(10000)
 
-        // Comprueba que se ha encontrado la localidad buscada
-        val textInputEditText = onView(
+        val viewGroup = onView(
             allOf(
-                childAtPosition(
-                    childAtPosition(
-                        withId(R.id.editText),
-                        0
-                    ),
-                    0
-                ),
-                isDisplayed()
+                withId(R.id.rvCiudades), hasDescendant(withId(R.id.search_item))
             )
         )
-        textInputEditText.perform(replaceText("La Coronada"), closeSoftKeyboard())
-
-        val textView = onView(
-            allOf(
-                withId(R.id.cityName), withText("La Coronada"),
-                withParent(withParent(withId(R.id.search_item))),
-                isDisplayed()
-            )
-        )
-        textView.check(matches(withText("La Coronada")))
-
+        viewGroup.check(matches(isDisplayed()))
     }
 
     private fun childAtPosition(

@@ -28,7 +28,7 @@ class RegistroTests {
     var mActivityScenarioRule = ActivityScenarioRule(IniciarSesionActivity::class.java)
 
     @Test
-    fun registraseTest() {
+    fun RegistroExitoConDatosValidosDeUnUsuario() {
         val materialButton = onView(
             withId(R.id.registro)
         )
@@ -66,7 +66,7 @@ class RegistroTests {
     }
 
     @Test
-    fun comprobarErroresTest() {
+    fun ComprobacionDeTodosLosMensajesDeErrorDelRegistro() {
         val materialButton = onView(
             withId(R.id.registro)
         )
@@ -298,7 +298,7 @@ class RegistroTests {
     }
 
     @Test
-    fun botonIniciarSesionTest() {
+    fun ComprobacionDelFuncionamientoDelBotonQueLlevaAIniciarSesion() {
         val materialButton = onView(
             withId(R.id.registro)
         )

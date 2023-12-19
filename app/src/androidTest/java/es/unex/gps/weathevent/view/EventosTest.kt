@@ -29,7 +29,7 @@ class EventosTest {
     var mActivityScenarioRule = ActivityScenarioRule(IniciarSesionActivity::class.java)
 
     @Test
-    fun CrearEventoTest() {
+    fun CreacionDeUnEvento() {
         val materialButton = onView(
             withId(R.id.registro)
         )
@@ -215,7 +215,7 @@ class EventosTest {
     }
 
     @Test
-    fun borrarEventoTest() {
+    fun BorradoDeUnEvento() {
         val materialButton = onView(
             withId(R.id.registro)
         )
