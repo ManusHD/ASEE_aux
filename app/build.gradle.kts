@@ -36,6 +36,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+
+
     }
 
     kotlinOptions {
@@ -74,11 +76,13 @@ dependencies {
     implementation("androidx.preference:preference:1.2.1")
     implementation("androidx.room:room-common:2.6.0")
     implementation("org.mockito:mockito-core:5.8.0")
-    testImplementation("io.mockk:mockk:1.12.2")
+    testImplementation("org.mockito:mockito-core:5.8.0")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation("org.mockito:mockito-android:5.8.0")
+
 
     val room_version = "2.5.0"
 
