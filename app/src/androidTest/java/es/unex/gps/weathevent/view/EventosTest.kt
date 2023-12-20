@@ -616,18 +616,16 @@ class EventosTest {
         )
         cardView.perform(click())
 
-        val viewGroup = onView(
-            allOf(
-                withParent(
-                    allOf(
-                        withId(android.R.id.content),
-                        withParent(withId(androidx.appcompat.R.id.action_bar_root)
-                        )
-                    )
-                ),
-                isDisplayed()))
-        viewGroup.check(matches(isDisplayed()))
+        Thread.sleep(2000)
 
+        val textView = onView(
+            allOf(
+                withId(R.id.ubication_text), withText("La Coronada"),
+                withParent(withParent(withId(android.R.id.content))),
+                isDisplayed()
+            )
+        )
+        textView.check(matches(withText("La Coronada")))
 
         val button = onView(
             allOf(
@@ -637,6 +635,20 @@ class EventosTest {
             )
         )
         button.check(matches(isDisplayed()))
+
+        val textView2 = onView(
+            allOf(
+                withId(R.id.indiceuv_title_view), withText("Índice UV"),
+                withParent(
+                    allOf(
+                        withId(R.id.indiceuv_card),
+                        withParent(withId(R.id.thrid_row))
+                    )
+                ),
+                isDisplayed()
+            )
+        )
+        textView2.check(matches(withText("Índice UV")))
 
         val linearLayout = onView(
             allOf(
