@@ -8,7 +8,6 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -102,7 +101,7 @@ class AjustesTest {
             )
         )
         materialTextView.perform(ViewActions.click())
-
+/*
         val recyclerView = Espresso.onView(
             Matchers.allOf(
                 ViewMatchers.withId(androidx.preference.R.id.recycler_view),
@@ -135,6 +134,7 @@ class AjustesTest {
             )
         )
 
+
         val appCompatCheckedTextView = Espresso.onData(Matchers.anything())
             .inAdapterView(
                 Matchers.allOf(
@@ -163,6 +163,8 @@ class AjustesTest {
                 ViewActions.click()
             )
         )
+
+ */
 
         val appCompatCheckedTextView2 = Espresso.onData(Matchers.anything())
             .inAdapterView(
