@@ -16,7 +16,7 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class ApiServiceTest {
 
-    // Mock del servicio de la API
+    // Mock del servicio de ElTiempoAPI
     @Mock
     private lateinit var apiService: ElTiempoAPI
 
@@ -29,17 +29,13 @@ class ApiServiceTest {
 
         `when`(apiService.getProvincias()).thenReturn(respuestaEsperada)
 
-        // Realiza la llamada a la API
         val resultado = apiService.getProvincias()
 
-        // Verifica que la llamada fue realizada correctamente
         Mockito.verify(apiService).getProvincias()
 
-        // Verifica que la respuesta de la API fue la esperada
         assertEquals(resultado.title,"Test de provincias")
 
     }
-
 
     @Test
     fun testGetMunicipios() = runBlocking {
@@ -47,19 +43,16 @@ class ApiServiceTest {
         val respuestaEsperada = MunicipiosResponse()
         respuestaEsperada.provincia = "Badajoz"
 
-        // Configura el comportamiento del servicio de la API al realizar la llamada
         `when`(apiService.getMunicipios(Mockito.anyString())).thenReturn(respuestaEsperada)
 
-        // Realiza la llamada a la API desde tu clase
         val resultado = apiService.getMunicipios(Mockito.anyString())
 
-        // Verifica que la llamada fue realizada correctamente
         Mockito.verify(apiService).getMunicipios(Mockito.anyString())
 
-        // Verifica que la respuesta de la API fue la esperada
         assertEquals(resultado.provincia,"Badajoz")
 
     }
+
     @Test
     fun testGetMunicipio() = runBlocking {
 
@@ -68,18 +61,13 @@ class ApiServiceTest {
         val respuestaEsperada = MunicipioResponse()
         respuestaEsperada.municipio = municipioTest
 
-        // Configura el comportamiento del servicio de la API al realizar la llamada
         `when`(apiService.getMunicipio(Mockito.anyString(), Mockito.anyString())).thenReturn(respuestaEsperada)
 
-        // Realiza la llamada a la API desde tu clase
         val resultado = apiService.getMunicipio(Mockito.anyString(), Mockito.anyString())
 
-        // Verifica que la llamada fue realizada correctamente
         Mockito.verify(apiService).getMunicipio(Mockito.anyString(), Mockito.anyString())
 
-        // Verifica que la respuesta de la API fue la esperada
         assertEquals(resultado.municipio?.NOMBRE,"Badajoz")
 
     }
-
 }

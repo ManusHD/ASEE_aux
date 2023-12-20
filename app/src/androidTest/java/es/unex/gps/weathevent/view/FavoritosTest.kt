@@ -303,6 +303,170 @@ class FavoritosTest {
     }
 
     @Test
+    fun verNotificacionDeSituacionMeteorologicaDeUnaLocalidadFavorita(){
+        val materialButton = Espresso.onView(
+            withId(R.id.registro)
+        )
+        materialButton.perform(ViewActions.click())
+
+        val appCompatEditText = Espresso.onView(
+            withId(R.id.nombreRegistro)
+        )
+        appCompatEditText.perform(
+            ViewActions.replaceText("test notificacion"),
+            ViewActions.closeSoftKeyboard()
+        )
+
+        val appCompatEditText2 = Espresso.onView(
+            withId(R.id.usernameRegistro)
+        )
+        appCompatEditText2.perform(
+            ViewActions.replaceText("testNotificacion"),
+            ViewActions.closeSoftKeyboard()
+        )
+
+        val appCompatEditText3 = Espresso.onView(
+            withId(R.id.emailRegistro)
+        )
+        appCompatEditText3.perform(
+            ViewActions.replaceText("test@test.es"),
+            ViewActions.closeSoftKeyboard()
+        )
+
+        val appCompatEditText4 = Espresso.onView(
+            withId(R.id.passRegistro)
+        )
+        appCompatEditText4.perform(ViewActions.replaceText("test"), ViewActions.closeSoftKeyboard())
+
+        val materialButton2 = Espresso.onView(
+            withId(R.id.confirmarRegistro)
+        )
+        materialButton2.perform(ViewActions.click())
+
+        val frameLayout = Espresso.onView(
+            withId(R.id.bottom_navigation)
+        )
+        frameLayout.check(ViewAssertions.matches(isDisplayed()))
+
+        val bottomNavigationItemView = Espresso.onView(
+            allOf(
+                withId(R.id.buscarFragment),
+                ViewMatchers.withContentDescription("Búsqueda"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.bottom_navigation),
+                        0
+                    ),
+                    1
+                ),
+                isDisplayed()
+            )
+        )
+        bottomNavigationItemView.perform(ViewActions.click())
+
+        Thread.sleep(15000)
+
+        val textInputEditText = Espresso.onView(
+            allOf(
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.editText),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        textInputEditText.perform(
+            ViewActions.replaceText("Montijo"),
+            ViewActions.closeSoftKeyboard()
+        )
+
+        val materialTextView = Espresso.onView(
+            allOf(
+                withId(R.id.cityName), ViewMatchers.withText("Montijo"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.search_item),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        materialTextView.perform(ViewActions.click())
+
+        val materialTextView2 = Espresso.onView(
+            allOf(
+                withId(R.id.imageFav),
+                childAtPosition(
+                    childAtPosition(
+                        withId(android.R.id.content),
+                        0
+                    ),
+                    5
+                ),
+                isDisplayed()
+            )
+        )
+        materialTextView2.perform(ViewActions.click())
+
+        Espresso.pressBack()
+
+        val bottomNavigationItemView2 = Espresso.onView(
+            allOf(
+                withId(R.id.favoritosFragment),
+                ViewMatchers.withContentDescription("Favoritos"),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.bottom_navigation),
+                        0
+                    ),
+                    2
+                ),
+                isDisplayed()
+            )
+        )
+        bottomNavigationItemView2.perform(ViewActions.click())
+
+        val cardView = Espresso.onView(
+            allOf(
+                withId(R.id.cv_Item),
+                childAtPosition(
+                    childAtPosition(
+                        withId(R.id.rvFavoritos),
+                        0
+                    ),
+                    0
+                ),
+                isDisplayed()
+            )
+        )
+        cardView.perform(ViewActions.click())
+
+        val textView = Espresso.onView(
+            allOf(
+                withId(R.id.municipio_view), ViewMatchers.withText("Montijo"),
+                withParent(withParent(withId(android.R.id.content))),
+                isDisplayed()
+            )
+        )
+        textView.check(ViewAssertions.matches(ViewMatchers.withText("Montijo")))
+
+        val textView2 = Espresso.onView(
+            withId(R.id.temperature_view)
+        )
+        textView2.check(ViewAssertions.matches(isDisplayed()))
+
+        val textView3 = Espresso.onView(
+            withId(R.id.descripcion_view)
+        )
+        textView3.check(ViewAssertions.matches(isDisplayed()))
+    }
+
+    @Test
     fun eliminarFavoritos(){
         val materialButton = Espresso.onView(
             withId(R.id.registro)
@@ -313,7 +477,7 @@ class FavoritosTest {
             withId(R.id.nombreRegistro)
         )
         appCompatEditText.perform(
-            ViewActions.replaceText("test fav 3"),
+            ViewActions.replaceText("test eliminar"),
             ViewActions.closeSoftKeyboard()
         )
 
