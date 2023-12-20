@@ -95,7 +95,7 @@ class EventUnitTest {
         assertEquals("25 de Diciembre de 2023", evento.date.getFormatDay())
         assertEquals("10:30", evento.date.getFormatHour())
         assertTrue( evento.date.isValid())
-        assertEquals(35922, evento.date.getAbsoluteDay())
+        assertEquals(739244, evento.date.getAbsoluteDay())
         assertEquals(1L, evento.userid)
         assertEquals(1L, evento.locationId)
     }

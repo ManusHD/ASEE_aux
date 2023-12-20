@@ -2,8 +2,6 @@ package es.unex.gps.weathevent.view
 
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView
-import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.action.ViewActions.click
@@ -38,46 +36,46 @@ class AjustesTest {
         )
         materialButton.perform(click())
 
-        val appCompatEditText = Espresso.onView(
-            ViewMatchers.withId(R.id.nombreRegistro)
+        val appCompatEditText = onView(
+            withId(R.id.nombreRegistro)
         )
         appCompatEditText.perform(
             ViewActions.replaceText("test preferencias"),
             ViewActions.closeSoftKeyboard()
         )
 
-        val appCompatEditText2 = Espresso.onView(
-            ViewMatchers.withId(R.id.usernameRegistro)
+        val appCompatEditText2 = onView(
+            withId(R.id.usernameRegistro)
         )
         appCompatEditText2.perform(
             ViewActions.replaceText("testPreferencias"),
             ViewActions.closeSoftKeyboard()
         )
 
-        val appCompatEditText3 = Espresso.onView(
-            ViewMatchers.withId(R.id.emailRegistro)
+        val appCompatEditText3 = onView(
+            withId(R.id.emailRegistro)
         )
         appCompatEditText3.perform(
             ViewActions.replaceText("test@test.es"),
             ViewActions.closeSoftKeyboard()
         )
 
-        val appCompatEditText4 = Espresso.onView(
-            ViewMatchers.withId(R.id.passRegistro)
+        val appCompatEditText4 = onView(
+            withId(R.id.passRegistro)
         )
         appCompatEditText4.perform(ViewActions.replaceText("test"), ViewActions.closeSoftKeyboard())
 
-        val materialButton2 = Espresso.onView(
-            ViewMatchers.withId(R.id.confirmarRegistro)
+        val materialButton2 = onView(
+            withId(R.id.confirmarRegistro)
         )
-        materialButton2.perform(ViewActions.click())
+        materialButton2.perform(click())
 
-        val overflowMenuButton = Espresso.onView(
+        val overflowMenuButton = onView(
             Matchers.allOf(
                 ViewMatchers.withContentDescription("More options"),
                 childAtPosition(
                     childAtPosition(
-                        ViewMatchers.withId(R.id.toolbar),
+                        withId(R.id.toolbar),
                         0
                     ),
                     0
@@ -85,107 +83,29 @@ class AjustesTest {
                 ViewMatchers.isDisplayed()
             )
         )
-        overflowMenuButton.perform(ViewActions.click())
+        overflowMenuButton.perform(click())
 
-        val materialTextView = Espresso.onView(
+        val materialTextView = onView(
+            ViewMatchers.withText("Ajustes")
+        )
+        materialTextView.perform(click())
+
+        val preferencia = onView(
+            ViewMatchers.withText("Celsius")
+        )
+        preferencia.perform(click())
+
+        val preferencia2 = onView(
+            ViewMatchers.withText("Fahrenheit")
+        )
+        preferencia2.perform(click())
+
+        val bottomNavigationItemView = onView(
             Matchers.allOf(
-                ViewMatchers.withId(R.id.action_settings), ViewMatchers.withText("Ajustes"),
+                withId(R.id.buscarFragment), ViewMatchers.withContentDescription("Búsqueda"),
                 childAtPosition(
                     childAtPosition(
-                        ViewMatchers.withId(androidx.appcompat.R.id.content),
-                        0
-                    ),
-                    0
-                ),
-                ViewMatchers.isDisplayed()
-            )
-        )
-        materialTextView.perform(ViewActions.click())
-/*
-        val recyclerView = Espresso.onView(
-            Matchers.allOf(
-                ViewMatchers.withId(androidx.preference.R.id.recycler_view),
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.list_container),
-                    0
-                )
-            )
-        )
-        recyclerView.perform(
-            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                1,
-                ViewActions.click()
-            )
-        )
-
-        val recyclerView2 = Espresso.onView(
-            Matchers.allOf(
-                ViewMatchers.withId(androidx.preference.R.id.recycler_view),
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.list_container),
-                    0
-                )
-            )
-        )
-        recyclerView2.perform(
-            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                1,
-                ViewActions.click()
-            )
-        )
-
-
-        val appCompatCheckedTextView = Espresso.onData(Matchers.anything())
-            .inAdapterView(
-                Matchers.allOf(
-                    ViewMatchers.withId(androidx.appcompat.R.id.select_dialog_listview),
-                    childAtPosition(
-                        ViewMatchers.withId(androidx.appcompat.R.id.contentPanel),
-                        0
-                    )
-                )
-            )
-            .atPosition(1)
-        appCompatCheckedTextView.perform(ViewActions.click())
-
-        val recyclerView3 = Espresso.onView(
-            Matchers.allOf(
-                ViewMatchers.withId(androidx.preference.R.id.recycler_view),
-                childAtPosition(
-                    ViewMatchers.withId(android.R.id.list_container),
-                    0
-                )
-            )
-        )
-        recyclerView3.perform(
-            RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(
-                2,
-                ViewActions.click()
-            )
-        )
-
- */
-
-        val appCompatCheckedTextView2 = Espresso.onData(Matchers.anything())
-            .inAdapterView(
-                Matchers.allOf(
-                    ViewMatchers.withId(androidx.appcompat.R.id.select_dialog_listview),
-                    childAtPosition(
-                        ViewMatchers.withId(androidx.appcompat.R.id.contentPanel),
-                        0
-                    )
-                )
-            )
-            .atPosition(1)
-        appCompatCheckedTextView2.perform(ViewActions.click())
-
-        val bottomNavigationItemView = Espresso.onView(
-            Matchers.allOf(
-                ViewMatchers.withId(R.id.buscarFragment),
-                ViewMatchers.withContentDescription("Búsqueda"),
-                childAtPosition(
-                    childAtPosition(
-                        ViewMatchers.withId(R.id.bottom_navigation),
+                        withId(R.id.bottom_navigation),
                         0
                     ),
                     1
@@ -193,13 +113,15 @@ class AjustesTest {
                 ViewMatchers.isDisplayed()
             )
         )
-        bottomNavigationItemView.perform(ViewActions.click())
+        bottomNavigationItemView.perform(click())
 
-        val textInputEditText = Espresso.onView(
+        Thread.sleep(10000)
+
+        val textInputEditText = onView(
             Matchers.allOf(
                 childAtPosition(
                     childAtPosition(
-                        ViewMatchers.withId(R.id.editText),
+                        withId(R.id.editText),
                         0
                     ),
                     0
@@ -212,9 +134,9 @@ class AjustesTest {
             ViewActions.closeSoftKeyboard()
         )
 
-        val materialTextView2 = Espresso.onView(
+        val materialTextView2 = onView(
             Matchers.allOf(
-                ViewMatchers.withId(R.id.cityName), ViewMatchers.withText("Montijo"),
+                withId(R.id.cityName), ViewMatchers.withText("Montijo"),
                 childAtPosition(
                     childAtPosition(
                         ViewMatchers.withId(R.id.search_item),
@@ -225,13 +147,14 @@ class AjustesTest {
                 ViewMatchers.isDisplayed()
             )
         )
-        materialTextView2.perform(ViewActions.click())
+        materialTextView2.perform(click())
 
-        val textView = Espresso.onView(
+        Thread.sleep(1500)
+
+        val textView = onView(
             Matchers.allOf(
-                ViewMatchers.withId(R.id.temperature_view),
-                ViewMatchers.withText(Matchers.endsWith("º F")),
-                ViewMatchers.withParent(ViewMatchers.withParent(ViewMatchers.withId(android.R.id.content))),
+                withId(R.id.temperature_view), ViewMatchers.withText(Matchers.endsWith("º F")),
+                ViewMatchers.withParent(ViewMatchers.withParent(withId(android.R.id.content))),
                 ViewMatchers.isDisplayed()
             )
         )

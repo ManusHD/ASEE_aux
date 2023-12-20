@@ -3,8 +3,10 @@ package es.unex.gps.weathevent.view
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.*
+import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.assertion.ViewAssertions.*
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -13,6 +15,7 @@ import androidx.test.filters.LargeTest
 import es.unex.gps.weathevent.R
 import org.hamcrest.Description
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.`is`
 import org.hamcrest.TypeSafeMatcher
@@ -415,18 +418,8 @@ class EventosTest {
         )
         appCompatImageButton.perform(click())
 
-        val viewGroup2 = onView(
-            allOf(
-                withParent(
-                    allOf(
-                        withId(R.id.rv_list_events),
-                        withParent(withId(R.id.listEventFragment))
-                    )
-                ),
-                isDisplayed()
-            )
-        )
-        viewGroup2.check(doesNotExist())
+        onView(withId(R.id.rv_list_events))
+            .check(matches(Matchers.not(hasDescendant(isDisplayed()))))
     }
 
     @Test

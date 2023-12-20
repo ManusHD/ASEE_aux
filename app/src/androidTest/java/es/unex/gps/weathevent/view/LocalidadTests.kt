@@ -296,6 +296,8 @@ class LocalidadTests {
         )
         materialTextView.perform(click())
 
+        Thread.sleep(3000)
+
         val bottomNavigationItemView2 = onView(
             allOf(
                 withId(R.id.proximosDiasFragment), withContentDescription("Próximos días"),
