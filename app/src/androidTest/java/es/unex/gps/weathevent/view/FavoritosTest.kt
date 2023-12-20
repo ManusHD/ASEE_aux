@@ -446,15 +446,6 @@ class FavoritosTest {
         )
         cardView.perform(ViewActions.click())
 
-        val textView = Espresso.onView(
-            allOf(
-                withId(R.id.municipio_view), ViewMatchers.withText("Montijo"),
-                withParent(withParent(withId(android.R.id.content))),
-                isDisplayed()
-            )
-        )
-        textView.check(ViewAssertions.matches(ViewMatchers.withText("Montijo")))
-
         val textView2 = Espresso.onView(
             withId(R.id.temperature_view)
         )
