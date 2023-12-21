@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity(), UserParam, OnCiudadClickListener, OnCl
 
         db = WeathEventDataBase.getInstance(this)
 
+
         if (intent.hasExtra(USER_INFO)) {
             user = intent.getSerializableExtra(USER_INFO) as User
             setUpUI()
