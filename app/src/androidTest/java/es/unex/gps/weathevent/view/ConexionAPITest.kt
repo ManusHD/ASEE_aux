@@ -28,9 +28,6 @@ class ConexionAPITest {
     var mActivityScenarioRule = ActivityScenarioRule(IniciarSesionActivity::class.java)
 
 
-
-
-
     @Test
     fun ConectarProyectoConAPIdeMeteorologia() {
         val materialButton = onView(
