@@ -29,6 +29,10 @@ jobs:
 
     - name: Run Android tests
       run: ./gradlew testDebugUnitTest
+
+    - name: Android Test Report
+      uses: adamansr/android-test-report-action@v1.2.0
+      if: ${{ always() }}
       
   build:
 
