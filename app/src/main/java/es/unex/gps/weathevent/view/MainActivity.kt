@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity(), UserParam, OnCiudadClickListener, OnCl
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
         db = WeathEventDataBase.getInstance(this)
 
         if (intent.hasExtra(USER_INFO)) {
