@@ -134,6 +134,8 @@ class AjustesTest {
             ViewActions.closeSoftKeyboard()
         )
 
+        Thread.sleep(2000)
+
         val materialTextView2 = onView(
             Matchers.allOf(
                 withId(R.id.cityName), ViewMatchers.withText("Montijo"),
