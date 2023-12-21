@@ -28,9 +28,7 @@ jobs:
       run: ./gradlew build
 
     - name: Run Android tests
-      uses: android/run-android-tests@v1
-      with:
-        test-targets: app/src/androidTest/java/es/unex/gps/weathevent
+      run: ./gradlew testDebugUnitTest
       
   build:
 
