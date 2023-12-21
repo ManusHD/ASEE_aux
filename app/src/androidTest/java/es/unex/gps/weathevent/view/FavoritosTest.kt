@@ -446,6 +446,8 @@ class FavoritosTest {
         )
         cardView.perform(ViewActions.click())
 
+        Thread.sleep(5000)
+
         val textView2 = Espresso.onView(
             withId(R.id.temperature_view)
         )
